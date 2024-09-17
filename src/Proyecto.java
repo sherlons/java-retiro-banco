@@ -18,8 +18,8 @@ public class Proyecto {
 
         // Interfax con el Usuario
         String menu = """
-                *** Escriba el número para ejecutrar acción***
-                1 - Consul tú Saldo
+                *** Tenemos un menú para ti la opcion que necesites para ejecutrar acción***
+                1 - Consulta tú Saldo
                 2 - Retirar
                 3 - Enviar
                 4 - Depositar
@@ -43,7 +43,7 @@ public class Proyecto {
                 double valorRetirar = teclado.nextDouble();
                 if (saldo < valorRetirar) {
                     System.out.println("Tu saldo es insuficiente para realizar esta operacion" + " **actual mente cuentas" +
-                            " con un saldo de: " + saldo + "**");
+                            " con un saldo de: " + saldo + " $**");
                 }else{
                     saldo = saldo - valorRetirar;
                     System.out.println("**actual mente cuentas" + saldo + " con un saldo de: " + saldo + " $**");
@@ -52,28 +52,55 @@ public class Proyecto {
                 break;
             // Enviar
             case 3:
+
                 String listaContactos = """
-                        lista de contactos;
-                        
+                        lista de contactos:
                         1 - Pique
-                        2 - maluma
-                        3 - petro
-                        4 - linda
-                        5 - volever
+                        2 - Maluma
+                        3 - Petro
+                        4 - Linda
+                        5 - Volever
                         """;
+                System.out.println(listaContactos);
                 int contacto = 0;
-                contacto = teclado.nextInt();
-                if (contacto != 5){
-                    System.out.println("Tu lista de : " + listaContactos +" lista de contactos");
-                }
-                break;
+
+            // bucle para seleccionar el contacto y realizar envio
+              while (contacto != 5) {
+                  System.out.println(listaContactos);
+                  contacto = teclado.nextInt();
+                  if (contacto == 5) {
+                      System.out.println("Volviendo al menú principal ....");
+                      break;
+                  }
+                  System.out.println("tu saldo actual es de: " + saldo + "$ ¿cuanto deseas enviar? ");
+                  double valorEnviar = teclado.nextDouble();
+                  if (saldo < valorEnviar) {
+                      System.out.println("Tu saldo es insuficiente para realizar esta operacion" + " **actual mente cuentas" +
+                              " con un saldo de: " + saldo + " $**");
+                      System.out.println("\n****************************************************************");
+                  } else {
+                      saldo = saldo - valorEnviar;
+                      System.out.println("¡¡¡tu trasferencia fue exitosa!!! tu saldo actual es de:" + saldo + " $");
+                      System.out.println("\n****************************************************************");
+                  }
+                  break;
+              }
             // Depositar
             case 4:
                 System.out.println("¿cuanto quieres Depositar?");
                 double valorDepositar = teclado.nextDouble();;
                 saldo = saldo + valorDepositar;
-                System.out.println("Deposito Exitoso tu saldo Actual es: " + saldo + " $");
+                System.out.println("¡¡woww!!! ¡¡ Deposito Exitoso !! tu saldo Actual es: " + saldo + " $");
+                System.out.println("\n****************************************************************");
                 break;
+            // salida
+            case 9:
+                System.out.println("***!!! Gracias por utilizar nuestros servicios¡¡¡*** ");
+                System.out.println("\n****************************************************************");
+                break;
+                    default:
+                        System.out.println("XXX Opcion no valida XXX");
+                        break;
         }
         }
 
